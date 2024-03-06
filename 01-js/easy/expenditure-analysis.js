@@ -54,16 +54,16 @@ function calculateTotalSpentByCategory(transactions) {
 //     timestamp: "2023-01-04",
 //   },
 // ];
-const transactions = [
-  {
-    id: 1,
-    timestamp: 1656076800000,
-    price: 10,
-    category: 'Food',
-    itemName: 'Pizza',
-  },
-];
-let result = calculateTotalSpentByCategory(transactions);
+// const transactions = [
+//   {
+//     id: 1,
+//     timestamp: 1656076800000,
+//     price: 10,
+//     category: 'Food',
+//     itemName: 'Pizza',
+//   },
+// ];
+// let result = calculateTotalSpentByCategory(transactions);
 
 console.log(result);
 module.exports = calculateTotalSpentByCategory;
