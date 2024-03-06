@@ -7,6 +7,14 @@
 
 function countVowels(str) {
     // Your code here
+    let cleanedStr = str.replace(/\s/g, '').toLowerCase();    //regular expression that removes white space
+    let vowelCount = 0;
+    for(let i = 0; i<cleanedStr.length; i++){
+      if(cleanedStr[i] === "a" || cleanedStr[i] === "e" || cleanedStr[i] === "o" || cleanedStr[i] === "u" || cleanedStr[i] === "i"){
+        vowelCount ++;
+      }
+    }
+    return vowelCount;
 }
 
 module.exports = countVowels;
