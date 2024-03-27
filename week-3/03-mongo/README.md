@@ -2,7 +2,7 @@
 
 ## Results Videos
 
-- [Video](./Pictures/mongoAssignment.mp4)
+- [Video](./Pictures/"Screenshot from 2024-03-27 22-00-34.png")(https://github.com/KitsuneKode/0-100xDev-Assignment-solutions/blob/solutions/week-3/03-mongo/Pictures/mongoAssignment.mp4)
  
 -Access [Pictures](./Pictures) to access the screenshots
 
