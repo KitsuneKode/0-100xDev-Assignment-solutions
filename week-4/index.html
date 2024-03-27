@@ -1,0 +1,172 @@
+
+<!--
+  This is a Todo App HTML file.
+  It contains functionality to add, remove, and update todos.
+  The todos are fetched from an API and displayed on the page.
+-->
+
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Todo App</title>
+
+</head>
+<script>
+  // Global variables
+  let globalId = 1;
+  let todoState = [];
+  let oldTodoState = [];
+
+  // Function to remove a todo
+  function removeTodoFromDom(todo) {
+    const element = document.getElementById(todo.id);
+    element.parent.removeChild(element);
+  }
+
+  // Function to update a todo
+  function updateTodooOnDom(oldTodo, newTodo) {
+    const element = document.getElementById(oldTodo.id);
+    element.children[0].innerHTML = newTodo.title;
+    element.children[1].innerHTML = newTodo.description;
+    element.children[0].innerHTML = newTodo.completed ? "Mark as done" : "Done";
+  }
+
+  // Function to update the state of todos
+  function updateState(newTodos) {
+    // calculate the diff b/w newTodos and oldTodos.
+    // More specifically, find out what todos are - 
+    // 1. added
+    // 2. deleted
+    // 3. updated
+    // oldTodoState =[...todoState]
+    const added = [];
+    const deleted = [];
+    const updated = [];
+    // calculate these 3 arrays
+    // call addTodo, removeTodoFromDom, updateTodooOnDom functions on each of the
+    // elements
+    // console.log("before added oldstatetodo", oldTodoState)
+    newTodos.forEach(newTodo => {
+      const oldTodo = oldTodoState.find(todo => todo.id === newTodo.id);
+      if (!oldTodo) {
+        added.push(newTodo);
+      } else if (oldTodo.title !== newTodo.title || oldTodo.description !== newTodo.description ) {
+        updated.push({ oldTodo, newTodo });
+      }
+    });
+
+    oldTodoState.forEach(oldTodo => {
+      const newTodo = newTodos.find(todo => todo.id === oldTodo.id);
+      if (!newTodo) {
+        deleted.push(oldTodo);
+      }
+    });
+
+    // console.log(added+"added")
+
+    added.forEach(todo => addTodotoDom(todo));
+    deleted.forEach(todo => removeTodoFromDom(todo));
+    updated.forEach(({ oldTodo, newTodo }) => updateTodooOnDom(oldTodo, newTodo));
+
+    oldTodoState = [...newTodos]; 
+
+    // oldTodoState = newTodos;                                         Here there is a big problem =>
+    /*In JavaScript, arrays and objects are reference types. This means that when you assign an array or object to another variable, you're actually assigning a reference to the original array or object, not creating a new copy.
+
+So, when you do something like this:
+let oldTodoState = todoState;
+
+You're not creating a new array oldTodoState with the same values as todoState. Instead, you're creating a new reference oldTodoState that points to the same array as todoState. Any changes you make to todoState will be reflected in oldTodoState, and vice versa, because they're both referencing the same underlying array.
+If you want to create a new array that has the same values but doesn't reference the same array, you need to create a copy of the array. You can do this using the spread operator (...), like this:
+let oldTodoState = [...todoState];
+
+Now, oldTodoState is a new array with the same values as todoState, but it doesn't reference the same array. Changes to todoState will not affect oldTodoState, and vice versa.*/
+
+  }
+
+  // Function to change the status of a todo
+  function changeStatus(id) {
+    const parent = document.getElementById(id);
+    parent.children[2].innerHTML = "Done!";
+  }
+
+  // Function to create a todo element
+  function createChild(title, description, id) {
+    const outerChild = document.createElement("div");
+    const child1 = document.createElement("div");
+    child1.innerHTML = title;
+    child1.setAttribute("style", "padding:10px 5px 5px 5px")
+    const child2 = document.createElement("div");
+    child2.innerHTML = description;
+    child2.setAttribute("style", "padding:5px 10px 5px 5px")
+
+    const button = document.createElement("button");
+    button.innerHTML = "Mark as completed"
+    button.setAttribute("style", "color: black;")
+    button.setAttribute("onClick", `changeStatus(${id})`)
+
+    outerChild.appendChild(child1);
+    outerChild.appendChild(child2);
+    outerChild.appendChild(button);
+    outerChild.setAttribute("id", id);
+
+    return outerChild;
+  }
+
+  // Function to add a todo
+  function addTodo() {
+    const title = document.getElementById("title").value;
+    const description = document.getElementById("description").value;
+    todoState.push({
+      title: title,
+      description: description,
+      id: globalId++,
+    })
+
+    // console.log(oldTodoState , "oldstatetodo before updateState")
+    
+    updateState(todoState);
+    // addTodotoDom(todoState[todoState.length - 1]);
+    // console.log(oldTodoState)
+  }
+  
+  function addTodotoDom(todo){
+    const todos = document.getElementById("todos");
+    
+    todos.appendChild(createChild(todo.title, todo.description, todo.id));                             //adding the todo to  DOM
+  }
+
+</script>
+
+<body>
+  <!-- Input fields and button to add a todo -->
+  <input type="text" id="title" placeholder="Todo title"></input> <br /><br />
+  <input type="text" id="description" placeholder="Todo description"></input> <br /><br />
+  <button type="button" onclick="addTodo()">Add todo</button>
+  <br /> <br />
+
+  <div id="todos">
+    Todos will be here
+  </div>
+
+  <script>
+    // Function to fetch todos from an API
+    async function fetchTodos() {
+      const res = await fetch("https://sum-server.100xdevs.com/todos");                         //harkirats server
+      const object = await res.json();
+      todoState = object.todos;
+
+      updateState(todoState);
+      const parent = document.getElementById("todos");
+
+    }
+
+    // Fetch todos when the page loads
+    // fetchTodos();                                //can be used when data needs to be fetched from the  database or other sites
+    
+  </script>
+</body>
+
+</html>

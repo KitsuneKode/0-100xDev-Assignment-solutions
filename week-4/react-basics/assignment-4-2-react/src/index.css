@@ -1,0 +1,231 @@
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  color-scheme: light dark;
+  color: rgba(255, 255, 255, 0.87);
+  background-color: #242424;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+a {
+  font-weight: 500;
+  color: #646cff;
+  text-decoration: inherit;
+}
+a:hover {
+  color: #535bf2;
+}
+input[type="text"] {
+  width: 400px; /* Increase the width as desired */
+  padding: 0.4em 0.8em;
+  font-size: 1em;
+  font-family: inherit;
+}
+
+body {
+  margin: 0;
+  display: flex;
+  place-items: center;
+  min-width: 320px;
+  min-height: 100vh;
+}
+
+h1 {
+  font-size: 3.2em;
+  line-height: 1.1;
+}
+
+button {
+  border-radius: 40px;
+  border: 2px solid transparent;
+  padding: 0.6em 1.2em;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit;
+  background-color: #1a1a1a;
+  cursor: pointer;
+  transition: border-color 0.25s;
+}
+button:hover {
+  border-color: #646cff;
+}
+button:focus,
+button:focus-visible {
+  outline: 4px auto -webkit-focus-ring-color;
+}
+
+input[type="text"] {
+  width: 450px; /* Increase the width as desired */
+  padding: 0.4em 0.8em;
+  font-size: 1em;
+  font-family: inherit;
+}
+
+/* input[type="text"]::placeholder {
+   opacity: 1;
+   animation: typing 10s steps(10, end) infinite;
+}
+
+@keyframes typing {
+   0% { opacity: 1; }
+   10% { opacity: 0.9; }
+   20% { opacity: 0.8; }
+   30% { opacity: 0.7; }
+   40% { opacity: 0.6; }
+   50% { opacity: 0.5; }
+   60% { opacity: 0.4; }
+   70% { opacity: 0.3; }
+   80% { opacity: 0.2; }
+   90% { opacity: 0.1; }
+   100% { opacity: 0; } 
+ } */
+@media (prefers-color-scheme: light) {
+  :root {
+    color: #213547;
+    background-color: #ffffff;
+  }
+  a:hover {
+    color: #747bff;
+  }
+  button {
+    background-color: #f9f9f9;
+  }
+}
+
+#count {
+  color: #ff00ff; /* Set the desired color */
+  font-size: 2em; /* Increase the font size as desired */
+  animation: pulse 10s infinite; /* Add animation to the div */
+  
+    border: 2px solid #646cff;
+    box-shadow: 0 0 10px #646cff;
+  
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(0.6);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(0.9);
+  }
+}
+
+#todosRender {
+  border: 2px solid #ff00ff;
+  box-shadow: 0 0 10px #646cff;
+    margin: 10px; /* Add space towards the outside of the div */
+  }
+#todoNumber {
+  /* position: absolute; */
+  top: 0;
+  right: 0;
+  width: 30%;
+  text-align: left;
+}
+
+#description {
+  color: #ff0000; /* Set the desired color for the text */
+  font-size: 1.2em; /* Increase the font size as desired */
+}
+
+
+#description {
+   color: #0000ff;; /* Set the desired color for the text */
+   font-size: 1.2em; /* Increase the font size as desired */
+   animation: colorChange 5s infinite; /* Add animation to the text */
+}
+@keyframes colorChange {
+  0% {
+    color: #ff0000; /* Set the initial color */
+  }
+  25% {
+    color: #00ff00; /* Set the color for the first change */
+  }
+  50% {
+    color: #0000ff; /* Set the color for the second change */
+  }
+  75% {
+    color: #ffff00; /* Set the color for the third change */
+  }
+  100% {
+    color: #ff00ff; /* Set the color for the final change */
+  }
+}
+
+
+#heading {
+  color: #29a0a7; /*Set the desired color*/
+  font-size: 2em; /* Increase the font size as desired */
+  animation: pulse 4s infinite; /* Add animation to the text */
+  border: 2px solid #646cff;
+  box-shadow: 0 0 10px #646cff;
+  transition: color 0.5s;
+  
+  cursor: pointer;
+}
+
+#heading:hover {
+  color: #b6d6df;
+}
+
+#heading:focus,
+#heading:focus-visible {
+  outline: 4px auto -webkit-focus-ring-color;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(0.7);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+#heading:active {
+  animation: colorChange 5s infinite; /* Add animation to the text */
+}
+
+@keyframes colorChange {
+  0% {
+    color: #ff0000; /* Set the initial color */
+  }
+  25% {
+    color: #00ff00; /* Set the color for the first change */
+  }
+  50% {
+    color: #0000ff; /* Set the color for the second change */
+  }
+  75% {
+    color: #ffff00; /* Set the color for the third change */
+  }
+  100% {
+    color: #ff00ff; /* Set the color for the final change */
+  }
+}
+
+
+#docs {
+  color: rgb(27, 189, 22);
+  text-align: right;
+  border: 2px solid teal;
+  box-shadow: 0 0 10px teal;
+  transition: font-size 0.5s;
+}
+
+#doc:hover {
+  font-size: 1.1em;
+}
