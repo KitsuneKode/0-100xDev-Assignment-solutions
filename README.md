@@ -16,7 +16,7 @@ I am open to corrections and new approaches to the solutions provided in this re
 
 ## Contact
 
-If you have any questions or need further clarification on any of the solutions, feel free to reach out to me. You can contact me through [email address] or [other contact information].
+If you have any questions or need further clarification on any of the solutions, feel free to reach out to me.
 
 ## Knowledge Sharing
 
