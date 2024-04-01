@@ -1,8 +1,8 @@
 # 04-mongo-with-jwt-auth
 
 ## Results Videos
+https://github.com/KitsuneKode/0-100xDev-Assignment-solutions/assets/135751082/f3b96aa8-619d-4387-ba0e-2cca9aa3c5c2
 
-- [Video](./Pictures/mongoWithJWT.mp4)
  
 -Access [Pictures](./Pictures) to access the screenshots
 
